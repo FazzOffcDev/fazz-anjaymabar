@@ -220,7 +220,17 @@ app.post('/api/create', async (req, res) => {
     res.status(500).json({ error: 'Failed to create panel', detail: err.message });
   }
 });
+// ...
+app.get('/login', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'login.html'));
+});
 
+// Route untuk halaman Dashboard
+app.get('/dashboard', (req, res) => {
+  // Catatan: Biasanya route dashboard memerlukan autentikasi
+  // Untuk saat ini, kita hanya menyajikan file HTML-nya.
+  res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
+});
 // Get servers
 app.get('/api/servers', async (req, res) => {
   try {
